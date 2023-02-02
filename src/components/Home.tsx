@@ -3,6 +3,7 @@ import { CurrentUserContext, ProductsContext, SectionsContext } from '../App';
 import { Product } from '../types/types';
 import CardDetail from './CardDetail';
 import Section from './Section';
+import './Home.css';
 
 const Home = () => {
   const user = useContext(CurrentUserContext);

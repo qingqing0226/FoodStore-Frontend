@@ -1,6 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { CurrentUserContext } from '../App';
 import { Account, Order } from '../types/types';
+import './MyAccount.css';
 
 const MyAccount = () => {
   const user = useContext(CurrentUserContext);
@@ -30,7 +31,7 @@ const MyAccount = () => {
   }, [account]);
 
   return (
-    <div>
+    <div className='account'>
       {account && 
         <div className='account-info'>
           <h2>My Account</h2>

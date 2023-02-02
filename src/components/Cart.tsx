@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, useRef } from 'react'
 import { CurrentUserContext } from '../App';
-import { Account, Order, TempItem } from '../types/types'
+import { Account, Order, TempItem } from '../types/types';
+import './Cart.css';
 
 const Cart = () => {
   const user = useContext(CurrentUserContext);

@@ -1,0 +1,64 @@
+.nav {
+    width: 100vw;
+    height: 10vh;
+    background-color: #9C373E;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.logo {
+    margin-left: 1rem;
+}
+
+.links-box {
+    align-self: center;
+    justify-self: center;
+    width: 100vw;
+    text-align: center;
+    text-decoration: inherit;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.links {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+.links:hover {
+    border-bottom: 1px solid;
+}
+
+.cart-link {
+    margin: 0 1rem;
+}
+
+.login-logout {
+    display: flex;
+    font-size: 0.5rem;
+}
+
+.profile-box {
+    display: flex;
+}
+
+.profile-img {
+    border-radius: 50%;
+    margin-top: 0.3rem;
+}
+
+.btn-signout {
+    height: 1.5rem;
+    width: 5rem;
+    align-self: center;
+    margin: 0 0.5rem;
+    background-color: #EDB38D;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.btn-signout:hover {
+    background-color: #ebcebb;
+    cursor: pointer;
+}

@@ -7,6 +7,7 @@ import {Routes, Route, Link} from 'react-router-dom';
 import Home from './components/Home';
 import Cart from './components/Cart';
 import MyAccount from './components/MyAccount';
+import Footer from './components/Footer';
 
 interface Response {
   credential:string
@@ -70,11 +71,14 @@ function App() {
         <SectionsContext.Provider value={sections}>
           <div className="App">
             <Nav user={user} handleSignOut={handleSignOut} />
-            <Routes>
-              <Route path='/' element={<Home />}></Route>
-              <Route path='/cart' element={<Cart />}></Route>
-              <Route path='/account' element={<MyAccount />}></Route>
-            </Routes>
+            <main>
+              <Routes>
+                <Route path='/' element={<Home />}></Route>
+                <Route path='/cart' element={<Cart />}></Route>
+                <Route path='/account' element={<MyAccount />}></Route>
+              </Routes>
+            </main>
+            <Footer />
           </div>
         </SectionsContext.Provider>
       </ProductsContext.Provider>
