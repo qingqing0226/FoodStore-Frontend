@@ -41,10 +41,10 @@ const MyAccount = () => {
       }
       <div className='orders'>
         <h2>Orders</h2>
-        {!orders && <div>You have no order yet.</div>} 
-        {orders && orders.map(o => <div key={o.id}>
+        {orders.length === 0 && <div>You have no order yet.</div>} 
+        {orders.length > 0 && orders.map(o => <div key={o.id}>
           <p>id: {o.id}</p>
-          <p>items: {o.items.length}</p>
+          <p>items: {o.items.length > 0 && o.items.map((item, index) => <div key={index}>{item.product.name} {item.amount}</div>)}</p>
           <p>delivery: {o.delivered ? 'delivered' : 'on the way'}</p>
           <p>payment: {o.paid ? 'paid' : 'not paid'}</p>
         </div>)}

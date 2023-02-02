@@ -18,6 +18,7 @@ export const ProductsContext = createContext<Array<Product>>([]);
 export const SectionsContext = createContext<Array<Section>>([]);
 
 function App() {
+  localStorage.clear();
   const [user, setUser] = useState<User>({} as User);
   const [products, setProducts] = useState<Array<Product>>([]);
   const [sections, setSections] = useState<Array<Section>>([]);

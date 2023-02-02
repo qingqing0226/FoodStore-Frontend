@@ -4,8 +4,9 @@ import { Account, Order, TempItem } from '../types/types'
 
 const Cart = () => {
   const user = useContext(CurrentUserContext);
-  const [items, setItems] = useState<Array<TempItem>>([]);
+  const [items, setItems] = useState<Array<TempItem>>();
   const [account, setAccount] = useState<Account | null>(null);
+  const [showInfo, setShowInfo] = useState(false);
   const [success, setSuccess] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const addressRef = useRef<HTMLInputElement>(null);
@@ -28,7 +29,8 @@ const Cart = () => {
     getAccount();
   }, []);
 
-  const handleForm = () => {
+  const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     const addr = addressRef.current? addressRef.current.value : '';
     const phone = phoneRef.current? phoneRef.current.value : '';
     const temp = account;
@@ -36,6 +38,7 @@ const Cart = () => {
       temp.address = addr;
       temp.phone = phone;
       setAccount(temp);
+      setShowInfo(true);
     }
   }
 
@@ -46,13 +49,15 @@ const Cart = () => {
         return;
       }
       const submitOrder = async () => {
+        const body = '{"user": ' + JSON.stringify(account) + ', "items": ' + JSON.stringify(items) + '}';
         const result = await fetch('http://localhost:8080/api/orders', 
           {method:'POST', 
           mode: 'cors', 
           headers: {'Content-Type': 'application/json'}, 
-          body: JSON.stringify({user: account, items: items})}
+          body: body}
         );
         const res: Order = await result.json();
+        localStorage.clear();
       }
       submitOrder();
       setSuccess(true);
@@ -60,8 +65,6 @@ const Cart = () => {
     }
 
   }
-
-
 
   return (
     <div className='cart'>
@@ -77,7 +80,15 @@ const Cart = () => {
         <input className='input-phone' ref={phoneRef} type="text" placeholder='Enter phone number' required />
         <button className='btn btn-form' type='submit'>Confirm</button>
         </form>}
+      {showInfo && 
+        <div>
+          <p>Address: {account?.address}</p>
+          <p>Phone no: {account?.phone}</p>
+          <p>If the information above is correct, you can submit the order.</p>
+        </div>
+      }
       {items &&<button className='btn btn-order' type='submit' onClick={handleOrder}>Submit Order</button>}
+      {success && <p>Congrats!You order has been accepted.</p>}
     </div>
   )
 }
