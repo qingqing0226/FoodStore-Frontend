@@ -2,6 +2,10 @@
 This repo is the frontend part, built with React, TypeScript and Google Identity Services.  
 Please run the [backend](https://github.com/qingqing0226/FoodStore-backend) first before running the frontend app.
 
+### Note that Google account login needs approval
+Currently authtication service is in testing mode and only my gmail account is in the allowed user list.
+In order to login with your gmail account, please send me your email address, so I can add your email to the list.
+
 ## Functionalities & Structure
 ### Navbar
 - supports login/logout via Google authentication
