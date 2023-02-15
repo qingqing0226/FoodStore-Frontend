@@ -4,6 +4,7 @@ import { Product } from '../types/types';
 import CardDetail from './CardDetail';
 import Section from './Section';
 import './Home.css';
+import { Route, Routes } from 'react-router-dom';
 
 const Home = () => {
   const user = useContext(CurrentUserContext);
@@ -13,18 +14,22 @@ const Home = () => {
 
 
   return (
-    <div className='home'>
-      {Object.keys(currentCard).length === 0 && 
-        <div className='section-box'>
-          {sections?.map(s => {
-            const filtered = products.filter(p => p.section.id === s.id);
-            return <Section name={s.name} products={filtered} setCurrentCard={setCurrentCard} />
-          })}
-        </div>
-      }
-      {Object.keys(currentCard).length !== 0 && <CardDetail product={currentCard} setCurrentCard={setCurrentCard}  />}
+    <main>
+      
+        {Object.keys(currentCard).length === 0 && 
+          <div className='home'>
+            <div className='section-box'>
+              {sections?.map(s => {
+                const filtered = products.filter(p => p.section.id === s.id);
+                return <Section name={s.name} products={filtered} setCurrentCard={setCurrentCard} />
+              })}
+            </div>
+          </div>
+        }
+        {Object.keys(currentCard).length !== 0 && <CardDetail product={currentCard} setCurrentCard={setCurrentCard}  />}
 
-    </div>
+      
+    </main>
   )
 }
 

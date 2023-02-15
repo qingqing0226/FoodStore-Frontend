@@ -71,13 +71,13 @@ function App() {
         <SectionsContext.Provider value={sections}>
           <div className="App">
             <Nav user={user} handleSignOut={handleSignOut} />
-            <main>
+            
               <Routes>
                 <Route path='/' element={<Home />}></Route>
                 <Route path='/cart' element={<Cart />}></Route>
                 <Route path='/account' element={<MyAccount />}></Route>
               </Routes>
-            </main>
+            
             <Footer />
           </div>
         </SectionsContext.Provider>
