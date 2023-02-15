@@ -24,7 +24,7 @@ const Nav = ({user, handleSignOut}: INavProps) => {
                 <div className='profile-box'>
                     <div className='img-name'>
                         <img className='profile-img' src={user.picture} width={50} height={50} />
-                        <p>{user.name}</p>
+                        <p className='name'>{user.name}</p>
                     </div>
                     {Object.keys(user).length !== 0 && <button className='btn btn-signout' onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleSignOut(e)}>Sign Out</button>}
                 </div>

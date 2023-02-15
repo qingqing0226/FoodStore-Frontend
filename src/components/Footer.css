@@ -1,7 +1,8 @@
 .footer {
     background-color: #9C373E;
     width: 100vw;
-    height: 10vh;
+    height:80px;
     position: fixed;
     bottom: 0;
+    overflow: hidden;
 }

@@ -1,20 +1,25 @@
 .carddetail-container {
     display: flex;
     flex-direction: column;
-    width: 30vw;
-    margin: 100px auto;
-    height: 100%;
-    border: 1px solid black;
+    width: 70vw;
+    margin: 0 auto;
+    height: 100vh;
+    background-color: #dba6aa;
 }
 
 .back {
-    margin-bottom: 2rem;
+    margin: 2rem 1rem;
     text-align: left;
+    font-size: 1.5rem;
+    color: #3c413e;
+    width: fit-content;
+    padding: 0.5rem;
 }
 
 .back:hover {
     cursor: pointer;
-    text-shadow: 0px 0px 5px #825369;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+    border-radius: 0.8rem;
 }
 
 .less-than {
@@ -25,23 +30,47 @@
 .img-details {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: #F6F6F6;
+    background-color: #FFE1E2;
+    margin: 0 auto;
+    width: 50vw;
+    border-radius: 1rem;
+}
+
+.img-container {
+    overflow: hidden;
+    margin: 0 auto;
+    border-radius: 1rem 0 0 1rem;
+}
+
+.image {
+    margin: 0 auto;
+    height: 100%;
 }
 
 .details {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    background-color: #FFE1E2;
     padding-left: 1rem;
+    align-items: center;
+    justify-content: center;
 }
 
-.type {
+.product-name {
     color: #a39f9f;
+    font-size: 2rem;
 }
 
-.liter {
-    color: #cfca81;
+.stock {
+    color: #c5be65;
+}
+
+input {
+    width: 80%;
+}
+
+.selected {
+    color: #3c413e;
 }
 
 button {
@@ -49,6 +78,7 @@ button {
     border: none;
     padding: 0.5rem;
     border-radius: 8px;
+    color: #3c413e;
 }
 
 button:hover {

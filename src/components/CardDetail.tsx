@@ -34,14 +34,16 @@ const CardDetail = ({product, setCurrentCard}: ICardDetailProps) => {
     <div className='carddetail-container'>
         <p className='back' onClick={() => setCurrentCard({} as Product)}><span className='less-than'>&#60;</span> Back</p>
         <div className='img-details'>
-			<img src={product.image} className='image' width={150} height={150} alt={product.name} />
+			<div className='img-container'>
+				<img src={product.image} className='image' alt={product.name} />
+			</div>
 			<div className='details'>
-				<h3>{product.name}</h3>
+				<h3 className='product-name'>{product.name.toUpperCase()}</h3>
 				<p className='stock'>{product.stock} in stock</p>
 				<input type='range' min={0} max={product.stock} value={orderAmount} step={1} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setOrderAmount(Number(e.target.value))} />
-				<p>select {orderAmount}</p>
-				<button type='submit' onClick={handleSelect}>Order</button>
-				{showSuccess && <div>{orderAmount} items have been added to the cart.</div>}
+				<p className='selected'>You have selected {orderAmount} items</p>
+				<button type='submit' onClick={handleSelect}>Add to cart</button>
+				{showSuccess && <div className='success'>{orderAmount} The product has been added to the cart.</div>}
 			</div>	
         </div>
     </div>
