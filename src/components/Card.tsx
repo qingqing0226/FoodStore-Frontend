@@ -13,8 +13,10 @@ const Card = ({product, setCurrentCard}: ICardProps) => {
         <img className='product-img' src={product.image} />
       </div>
       <p className='product-name'>{product.name}</p>
-      <p className='product-stock'>{product.stock} in stock</p>
-      <p className='product-price'>{product.price} kr</p>
+      <div className='stock-price-container'>
+        <p className='product-stock'>{product.stock} in stock</p>
+        <p className='product-price'>{product.price} kr</p>
+      </div>
     </div>
   )
 }

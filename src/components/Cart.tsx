@@ -69,12 +69,22 @@ const Cart = () => {
 
   return (
     <div className='cart'>
-      <h2>Cart</h2>
-      {items && items.map((item, index) => 
-        <div key={index}>
-          <p>{item.product.name} x{item.amount} {item.product.price} kr</p>
-        </div>)
-      }
+      <h2 className='heading'>Cart</h2>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+        {items && items.map((item, index) => 
+          <tr key={index}>
+            <td>{item.product.name}</td>
+            <td>{item.product.price}</td>
+            <td>{item.amount}</td>
+          </tr>)
+        }
+        {items && <tr><td colSpan={3}>Total: {items.map(item => item.product.price * item.amount).reduce((accum, curr) => accum + curr, 0)} SEK</td></tr>}
+      </table>
       {showForm && <form className='input-box' onSubmit={handleForm}>
         <div>Please fill in the form</div>
         <input className='input-address' ref={addressRef} type="text" placeholder='Enter address' required />
@@ -89,7 +99,7 @@ const Cart = () => {
         </div>
       }
       {items &&<button className='btn btn-order' type='submit' onClick={handleOrder}>Submit Order</button>}
-      {success && <p>Congrats!You order has been accepted.</p>}
+      {success && <p className='congrats'>Congrats! You order has been accepted.</p>}
     </div>
   )
 }

@@ -43,7 +43,7 @@ const CardDetail = ({product, setCurrentCard}: ICardDetailProps) => {
 				<input type='range' min={0} max={product.stock} value={orderAmount} step={1} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setOrderAmount(Number(e.target.value))} />
 				<p className='selected'>You have selected {orderAmount} items</p>
 				<button type='submit' onClick={handleSelect}>Add to cart</button>
-				{showSuccess && <div className='success'>{orderAmount} The product has been added to the cart.</div>}
+				{showSuccess && <div className='success'>{orderAmount} items have been added to the cart.</div>}
 			</div>	
         </div>
     </div>

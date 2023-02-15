@@ -50,6 +50,8 @@ summary:hover {
     border-radius: 1rem;
     background-color: #ffc8cc;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
@@ -66,4 +68,26 @@ summary:hover {
 
 .product-img {
     width: 100%;
+}
+
+.product-name {
+    font-size: 1.5rem;
+    text-align: left;
+    margin-left: 0.3rem;
+}
+
+.stock-price-container {
+    display: flex;
+    padding: 0.3rem;
+    font-size: 0.8rem;
+    justify-content: space-between;
+}
+
+.product-stock {
+    text-align: left;
+    color: #938e48;
+}
+
+.product-price {
+    text-align: right;
 }
