@@ -40,6 +40,13 @@ to install required packages, and
 to run the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+## Sample image of the website
+
+For more images, please go to the folder `images`
+
+![homepage](images/homepage.png)
+
+
 
 
 
