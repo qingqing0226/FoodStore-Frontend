@@ -51,7 +51,6 @@ const MyAccount = () => {
           </div>
         </div>
       }
-      <hr />
       {account &&       
         <div className='orders'>
           <h2>Orders</h2>
