@@ -7,6 +7,7 @@ import Phone from './telephone.png';
 import UserImg from './user.png';
 import Email from './email.png';
 import Address from './home.png';
+import OrderDetail from './OrderDetail';
 
 const MyAccount = () => {
   const user = useContext(CurrentUserContext);
@@ -63,7 +64,7 @@ const MyAccount = () => {
             </tr>
             {orders.length > 0 && 
               orders.map(order => <tr key={order.id}>
-                <td>{order.id}</td>
+                <td>{<OrderDetail order={order} />}</td>
                 <td>{order.delivered ? 'Delivered' : 'On the way'}</td>
                 <td>{order.paid ? 'paid' : 'unpaid'}</td>
                 <td>{order.items.map(item => item.product.price * item.amount).reduce((accu, curr) => accu + curr, 0)}</td>
