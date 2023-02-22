@@ -8,33 +8,33 @@
 }
 
 .order-container {
-    background-color: rgb(144, 121, 121);
-    height: fit-content;
-    width: 65vw;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    min-height: 45vh;
+    width: 68vw;
     padding: 0.5rem;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    backdrop-filter: blur(50px);
+    align-items: center;
 }
 
 .order-header {
     display: flex;
     justify-content: space-between;
+    width: 66vw;
+    font-size: 2rem;
+    margin: 0.5rem auto;
 }
 
 .close-btn {
     background: none;
-    border: none;
-    height: 1rem;
-    width: 1rem;
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid rgb(142, 84, 84);
 }
 
-h2 {
-    margin-bottom: 1rem;
-    width: 60vw;
-}
-
-table {
-    width: 60vw;
+.orderdetail-table {
+    width: 66vw;
+    margin: 1rem auto;
 }
