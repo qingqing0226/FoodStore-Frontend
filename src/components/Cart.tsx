@@ -45,15 +45,18 @@ const Cart = () => {
 
   const handleDecrease = (e: React.MouseEvent<HTMLButtonElement>, item: TempItem) => {
     e.preventDefault();
-    item.amount = item.amount - 1;
-    if(item.amount === 0) {
+    if(item.amount === 1) {
       if(items) {
         const filtered = items.filter(i => i.product.id !== item.product.id);
         setItems(filtered);
       }
 
-    } else {
-      setItems(items);
+    } else if(item.amount > 1){
+      if(items) {
+        const copy = [...items];
+        copy.filter(i => i.product.id === item.product.id).forEach(ele => ele.amount = ele.amount - 1);
+        setItems(copy);
+      }
     }
     localStorage.setItem('items', JSON.stringify(items));
     // check storage change
@@ -102,7 +105,9 @@ const Cart = () => {
           <tr key={index}>
             <td>{item.product.name}</td>
             <td>{item.product.price}</td>
-            <td><button type='submit' onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleDecrease(e, item)}>-</button>{item.amount}<button>+</button></td>
+            <td>
+              <button type='submit' onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleDecrease(e, item)}>-</button> {item.amount} <button>+</button>
+            </td>
           </tr>)
         }
         {items && <tr><td colSpan={3}>Total: {items.map(item => item.product.price * item.amount).reduce((accum, curr) => accum + curr, 0)} SEK</td></tr>}
