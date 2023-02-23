@@ -5,7 +5,7 @@ import './Cart.css';
 
 const Cart = () => {
   const user = useContext(CurrentUserContext);
-  const [items, setItems] = useState<Array<TempItem>>();
+  const [items, setItems] = useState<Array<TempItem> | null>();
   const [account, setAccount] = useState<Account | null>(null);
   const [showInfo, setShowInfo] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -96,6 +96,7 @@ const Cart = () => {
       submitOrder();
       setSuccess(true);
       setShowForm(false);
+      setItems(null);
     }
 
   }
@@ -115,9 +116,9 @@ const Cart = () => {
             <td>{item.product.name}</td>
             <td>{item.product.price}</td>
             <td>
-              <button type='submit' onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleDecrease(e, item)}>-</button> 
-              {item.amount} 
-              <button type='submit' onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleIncrease(e, item)}>+</button> 
+              <button className='btn-dec' type='submit' onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleDecrease(e, item)}>-</button> 
+              {' ' + item.amount + ' '} 
+              <button className='btn-inc' type='submit' onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleIncrease(e, item)}>+</button> 
             </td>
           </tr>)
         }

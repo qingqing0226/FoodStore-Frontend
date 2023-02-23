@@ -22,7 +22,7 @@ const OrderDetail = ({ order }: IOrderDetailProps) => {
 		>
 			<div className='order-container'>
 				<div className='order-header'>
-					<div className='popup-heading'>Order Details</div>
+					<div className='popup-heading'>Order ID: {order.id}</div>
 					<button className='close-btn' onClick={closePop}>X</button>
 				</div>
 				<table className="orderdetail-table">
