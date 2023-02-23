@@ -47,8 +47,10 @@ const Cart = () => {
     e.preventDefault();
     if(item.amount === 1) {
       if(items) {
-        const filtered = items.filter(i => i.product.id !== item.product.id);
+        const copy = [...items];
+        const filtered = copy.filter(i => i.product.id !== item.product.id);
         setItems(filtered);
+        localStorage.setItem('items', JSON.stringify(filtered));
       }
 
     } else if(item.amount > 1){
@@ -56,15 +58,31 @@ const Cart = () => {
         const copy = [...items];
         copy.filter(i => i.product.id === item.product.id).forEach(ele => ele.amount = ele.amount - 1);
         setItems(copy);
+        localStorage.setItem('items', JSON.stringify(copy));
       }
     }
-    localStorage.setItem('items', JSON.stringify(items));
     // check storage change
     const itemsInCart: string | null = localStorage.getItem('items');
     if(itemsInCart) {
       const itemList: TempItem[] = JSON.parse(itemsInCart);
       console.log(itemList)
     }
+  }
+
+  const handleIncrease = (e: React.MouseEvent<HTMLButtonElement>, item: TempItem) => {
+    e.preventDefault();
+    if(item.amount < item.product.stock) {
+      item.amount = item.amount + 1;
+      setItems(items);
+    }
+
+    // check storage change
+    const itemsInCart: string | null = localStorage.getItem('items');
+    if(itemsInCart) {
+      const itemList: TempItem[] = JSON.parse(itemsInCart);
+      console.log(itemList)
+    }
+
   }
 
   const handleOrder = () => {
