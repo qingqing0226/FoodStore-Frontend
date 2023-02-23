@@ -61,26 +61,17 @@ const Cart = () => {
         localStorage.setItem('items', JSON.stringify(copy));
       }
     }
-    // check storage change
-    const itemsInCart: string | null = localStorage.getItem('items');
-    if(itemsInCart) {
-      const itemList: TempItem[] = JSON.parse(itemsInCart);
-      console.log(itemList)
-    }
   }
 
   const handleIncrease = (e: React.MouseEvent<HTMLButtonElement>, item: TempItem) => {
     e.preventDefault();
     if(item.amount < item.product.stock) {
-      item.amount = item.amount + 1;
-      setItems(items);
-    }
-
-    // check storage change
-    const itemsInCart: string | null = localStorage.getItem('items');
-    if(itemsInCart) {
-      const itemList: TempItem[] = JSON.parse(itemsInCart);
-      console.log(itemList)
+      if(items) {
+        const copy = [...items];
+        copy.filter(i => i.product.id === item.product.id).forEach(ele => ele.amount = ele.amount + 1);
+        setItems(copy);
+        localStorage.setItem('items', JSON.stringify(copy));
+      }
     }
 
   }
@@ -124,7 +115,9 @@ const Cart = () => {
             <td>{item.product.name}</td>
             <td>{item.product.price}</td>
             <td>
-              <button type='submit' onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleDecrease(e, item)}>-</button> {item.amount} <button>+</button>
+              <button type='submit' onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleDecrease(e, item)}>-</button> 
+              {item.amount} 
+              <button type='submit' onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleIncrease(e, item)}>+</button> 
             </td>
           </tr>)
         }
